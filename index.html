@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -17,41 +19,37 @@ font-family:Arial, Helvetica, sans-serif;
 
 body{
 
-background:linear-gradient(135deg,#111,#1b1b1b,#2b2b2b);
+background:linear-gradient(135deg,#0f0f0f,#1e1e1e,#2b2b2b);
+
 height:100vh;
+
 display:flex;
+
 justify-content:center;
+
 align-items:center;
+
 overflow:hidden;
 
 }
 
-.container{
+.contenedor{
 
-width:90%;
-max-width:900px;
-height:90vh;
+width:100%;
 
-background:white;
-
-border-radius:25px;
-
-overflow:hidden;
-
-box-shadow:0px 20px 50px rgba(0,0,0,.5);
+height:100%;
 
 position:relative;
 
 }
 
-.inicio{
+.portada{
 
 position:absolute;
 
 width:100%;
-height:100%;
 
-background:linear-gradient(135deg,#111,#222,#333);
+height:100%;
 
 display:flex;
 
@@ -65,23 +63,25 @@ color:white;
 
 text-align:center;
 
+background:linear-gradient(135deg,#111,#222,#333);
+
 transition:1s;
 
-z-index:5;
+z-index:10;
 
 }
 
-.inicio h1{
+.portada h1{
 
-font-size:42px;
+font-size:45px;
 
 margin-bottom:15px;
 
 }
 
-.inicio p{
+.portada p{
 
-font-size:20px;
+font-size:22px;
 
 opacity:.8;
 
@@ -93,7 +93,7 @@ button{
 
 padding:18px 40px;
 
-font-size:20px;
+font-size:22px;
 
 border:none;
 
@@ -111,19 +111,9 @@ transition:.3s;
 
 button:hover{
 
-transform:scale(1.08);
+transform:scale(1.05);
 
 box-shadow:0 0 20px #ff4d6d;
-
-}
-
-#visor{
-
-display:none;
-
-width:100%;
-
-height:100%;
 
 }
 
@@ -131,59 +121,37 @@ iframe{
 
 width:100%;
 
-height:100%;
+height:100vh;
 
 border:none;
+
+display:none;
 
 }
 
 #musicaBtn{
 
-position:absolute;
+position:fixed;
 
 top:20px;
 
 right:20px;
 
-display:none;
-
 z-index:100;
+
+display:none;
 
 background:#111;
 
 }
 
-#mensaje{
-
-position:absolute;
-
-bottom:20px;
-
-left:50%;
-
-transform:translateX(-50%);
-
-background:rgba(0,0,0,.75);
-
-padding:15px 25px;
-
-color:white;
-
-border-radius:50px;
-
-display:none;
-
-font-size:18px;
-
-}
-
-.heart{
+.corazon{
 
 position:fixed;
 
-color:#ff4d6d;
+top:-50px;
 
-font-size:25px;
+font-size:30px;
 
 animation:caer linear forwards;
 
@@ -195,7 +163,7 @@ pointer-events:none;
 
 0%{
 
-transform:translateY(-100px) rotate(0deg);
+transform:translateY(-100px);
 
 opacity:1;
 
@@ -203,7 +171,7 @@ opacity:1;
 
 100%{
 
-transform:translateY(110vh) rotate(720deg);
+transform:translateY(110vh);
 
 opacity:0;
 
@@ -217,19 +185,21 @@ opacity:0;
 
 <body>
 
-<div class="container">
+<div class="contenedor">
 
-<div class="inicio" id="inicio">
+<div class="portada" id="portada">
 
 <h1>💌 Tengo algo para ti</h1>
 
-<p>No es un simple documento...</p>
+<p>No es una simple carta...</p>
 
-<p>Es una parte de mi corazón ❤️</p>
+<p>Es un pedacito de mi corazón ❤️</p>
+
+<br>
 
 <button onclick="abrirCarta()">
 
-Abrir Carta
+Abrir Carta ❤️
 
 </button>
 
@@ -241,17 +211,7 @@ Abrir Carta
 
 </button>
 
-<div id="visor">
-
-<iframe src="carta.pdf"></iframe>
-
-</div>
-
-<div id="mensaje">
-
-Gracias por leer mi carta ❤️
-
-</div>
+<iframe id="visor" src="carta.html"></iframe>
 
 </div>
 
@@ -269,21 +229,13 @@ musica.volume=.25;
 
 function abrirCarta(){
 
-document.getElementById("inicio").style.opacity="0";
+musica.play();
 
-setTimeout(()=>{
-
-document.getElementById("inicio").style.display="none";
+document.getElementById("portada").style.display="none";
 
 document.getElementById("visor").style.display="block";
 
 document.getElementById("musicaBtn").style.display="block";
-
-document.getElementById("mensaje").style.display="block";
-
-musica.play();
-
-},800);
 
 lluvia();
 
@@ -307,27 +259,25 @@ function lluvia(){
 
 setInterval(()=>{
 
-const heart=document.createElement("div");
+const h=document.createElement("div");
 
-heart.classList.add("heart");
+h.className="corazon";
 
-heart.innerHTML="❤️";
+h.innerHTML="❤️";
 
-heart.style.left=Math.random()*100+"vw";
+h.style.left=Math.random()*100+"vw";
 
-heart.style.animationDuration=(Math.random()*3+3)+"s";
+h.style.animationDuration=(Math.random()*3+3)+"s";
 
-heart.style.fontSize=(Math.random()*20+20)+"px";
-
-document.body.appendChild(heart);
+document.body.appendChild(h);
 
 setTimeout(()=>{
 
-heart.remove();
+h.remove();
 
 },6000);
 
-},300);
+},350);
 
 }
 
