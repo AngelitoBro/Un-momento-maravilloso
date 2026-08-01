@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Ti ❤️</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+
+background:linear-gradient(135deg,#141414,#2d2d2d);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+
+}
+
+.container{
+
+width:90%;
+max-width:900px;
+background:white;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0px 20px 40px rgba(0,0,0,.5);
+
+}
+
+.top{
+
+background:#111;
+padding:25px;
+color:white;
+text-align:center;
+
+}
+
+.top h1{
+
+font-size:30px;
+
+}
+
+.top p{
+
+margin-top:10px;
+opacity:.8;
+
+}
+
+button{
+
+margin-top:20px;
+padding:15px 35px;
+border:none;
+border-radius:50px;
+background:#ff4d6d;
+color:white;
+font-size:18px;
+cursor:pointer;
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:scale(1.05);
+
+}
+
+#pdf{
+
+display:none;
+height:80vh;
+
+}
+
+iframe{
+
+width:100%;
+height:100%;
+border:none;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="top">
+
+<h1>💌 Tengo algo para ti...</h1>
+
+<p>No es un simple documento.</p>
+
+<p>Es una parte de mi corazón.</p>
+
+<button onclick="abrirCarta()">
+
+Abrir Carta ❤️
+
+</button>
+
+</div>
+
+<div id="pdf">
+
+<iframe src="carta.pdf"></iframe>
+
+</div>
+
+</div>
+
+<script>
+
+function abrirCarta(){
+
+document.querySelector(".top").style.display="none";
+
+document.getElementById("pdf").style.display="block";
+
+}
+
+</script>
+
+</body>
+
+</html>
